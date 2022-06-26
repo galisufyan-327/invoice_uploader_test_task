@@ -15,10 +15,10 @@ class InvoiceBatch < ApplicationRecord
       erors_csv << ["internal_id", "amount", "Due Date", "Errors"]
     end
 
-    CreateInvoicesJob.perform_later(invoice_batch: self)
     self.errors_csv = File.new(errors_file_path)
     self.save!
     File.delete(errors_file_path) if File.exist?(errors_file_path)
+    CreateInvoicesJob.perform_later(invoice_batch: self)
   end
 
   private
