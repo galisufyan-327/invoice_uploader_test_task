@@ -1,0 +1,15 @@
+
+default: &default
+  adapter: mysql2
+  host: localhost
+  encoding: utf8
+  username: root
+  password: root
+
+development:
+  <<: *default
+  database: invoice_uploader_development
+
+test:
+  <<: *default
+  database: invoice_uploader_test

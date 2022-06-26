@@ -1,0 +1,32 @@
+<h1>You can see list of all invoices uploaded in this batch here</h1>
+<p>A background job is in progress, which is creating records, if you are not seeign all the records you uploaded in thsi page please refresh the page or download CSV file to see the records which have errors</p>
+<p>If you are not seeing records here it means your records are processed, download and see folling file for errors and invoices you uploaded</p>
+
+<%= link_to "All batches", invoice_batches_path %>
+<br />
+<%= link_to "Download All Records", @invoice_batch.batch_file.url %>
+<br />
+<%= link_to "Download Errors", @invoice_batch.errors_csv.url %>
+<br />
+
+<h1>Invoices</h1>
+
+<table class="table">
+  <thead>
+    <th>Internal ID</th>
+    <th>Amount</th>
+    <th>Due Date</th>
+    <th>Selling Price</th>
+  </thead>
+  <tbody>
+    <% @invoice_batch.invoices.each do |invoice| %>
+      <tr>
+        <td><%= invoice.internal_id %></td>
+        <td><%= invoice.amount %></td>
+        <td><%= invoice.due_date %></td>
+        <td><%= invoice.selling_price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

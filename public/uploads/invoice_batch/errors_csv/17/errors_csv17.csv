@@ -1,0 +1,2 @@
+internal_id,amount,Due Date,Errors
+2,200.5,2022-06-25,Due date can't be in the past

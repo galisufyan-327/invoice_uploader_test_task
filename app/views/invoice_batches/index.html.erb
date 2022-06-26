@@ -1,0 +1,27 @@
+<h1>You can uoload your file here</h1>
+
+<%= form_for @invoice_batch do |f| %>
+  <%= f.file_field :batch_file %>
+  <%= f.submit :upload %>
+<% end %>
+
+<br />
+<h1> List of all invoice Batches</h1>
+
+<table class="table">
+  <thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @invoice_batches.each do |batch| %>
+      <tr>
+        <td><%= batch.id %></td>
+        <td><%= link_to batch.name, invoice_batch_path(batch) %></td>
+        <td><%= link_to "Delete", invoice_batch_url(batch), :method => :delete, data: {:confirm => 'Are you sure?'} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
